@@ -1,16 +1,29 @@
 <script>
-import { store } from '../data/data';
 export default {
+    props: { imageUrl: 'string', number: 'string', name: 'string', type1: 'string' },
     data() {
         return {
-            store,
         }
     }
 }
 </script>
 
 <template>
-    <h1 v-for="pokemon in store.pokemons">{{ pokemon.name }}</h1>
+    <div class="card">
+        <img :src="imageUrl" alt="">
+        <h4>{{ number }}</h4>
+        <h3>{{ name }}</h3>
+        <h4>{{ type1 }}</h4>
+    </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+    text-align: center;
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+}
+</style>
