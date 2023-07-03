@@ -14,20 +14,44 @@ export default {
 
 <template>
     <div class="container">
-        <MainCard v-for="pokemon in store.pokemons" :name="pokemon.name" :number="pokemon.number"
-            :imageUrl="pokemon.imageUrl" :type1="pokemon.type1" />
+        <img src="https://icon2.cleanpng.com/20180614/wbe/kisspng-super-smash-bros-melee-computer-icons-pok-ball-5b22fe0bc03821.3365128115290199157873.jpg"
+            alt="" class="pokeball">
+        <div class="container-card">
+            <MainCard v-for="pokemon in store.pokemons" :name="pokemon.name" :number="pokemon.number"
+                :imageUrl="pokemon.imageUrl" :type1="pokemon.type1" />
 
+        </div>
     </div>
 </template>
 
+
 <style lang="scss" scoped>
 .container {
-    max-width: 1400px;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
 
-    .card {
-        flex-basis: calc(100% / 4);
+    .pokeball {
+        position: absolute;
+        bottom: 60px;
+        right: 40px;
+        width: 70px;
+        border-radius: 30px;
+    }
+
+    .container-card {
+        max-width: 1400px;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: lightgray;
+        padding: 30px;
+        border-radius: 30px;
+
+        .card {
+            flex-basis: calc(100% / 4 - 20px);
+        }
     }
 }
 </style>
