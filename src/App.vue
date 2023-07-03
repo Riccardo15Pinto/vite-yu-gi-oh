@@ -2,7 +2,9 @@
 import axios from '../node_modules/axios';
 import { store } from './data/data';
 const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
+import Appmain from './components/AppMain.vue'
 export default {
+  components: { Appmain },
   data() {
     return {
       store,
@@ -22,6 +24,8 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+  <Appmain />
+</template>
 
 <style scoped></style>
