@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             store,
-            selectedOption: null,
+            selectedOption: '',
         }
     },
     emits: ['select-Option']
@@ -12,9 +12,10 @@ export default {
 </script>
 
 <template>
-    <select v-model="selectedOption">
-        <option value="0">Tipo</option>
-        <option v-for="type in store.mainType" :value="type" @click="$emit('select-Option')">{{ type }}</option>
+    <select v-model="selectedOption" @change="$emit('select-Option', selectedOption)">
+        <option value="0">Rimuovi filtro/i</option>
+        <option v-for="type in store.mainType" :value="type">{{ type }}
+        </option>
     </select>
 </template>
 
