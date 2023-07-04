@@ -4,10 +4,10 @@ import { store } from './data/data';
 const endpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons';
 const typeEndpoint = 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons/types1';
 import Appmain from './components/AppMain.vue'
-import mainType from './components/MainSelect.vue';
+import AppHeader from './components/AppHeader.vue';
 
 export default {
-  components: { Appmain, mainType },
+  components: { Appmain, AppHeader },
   data() {
     return {
       store,
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <mainType @select-Option="getfilterPokemons" />
+  <AppHeader @select-Option="getfilterPokemons" />
   <Appmain />
 </template>
 
