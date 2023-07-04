@@ -17,6 +17,12 @@ export default {
     getItemsList(target) {
       axios.get(target).then(res => {
         this.store.pokemons = res.data.docs;
+        this.store.page = res.data.page;
+        this.store.totalDocs = res.data.totalDocs;
+        this.store.hasPrevPage = res.data.hasPrevPage;
+        this.store.hasNextPage = res.data.hasNextPage;
+        this.store.prevPage = res.data.prevPage;
+        this.store.nextPage = res.data.nextPage;
       })
     },
 
