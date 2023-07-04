@@ -3,9 +3,8 @@ import { store } from '../data/data';
 import MainCard from './MainCard.vue';
 export default {
     data() {
-        return {
-            store,
-        }
+        return store
+
     },
     components: { MainCard },
 
@@ -15,8 +14,8 @@ export default {
 <template>
     <div class="container">
         <div class="container-card">
-            <MainCard v-for="pokemon in store.pokemons" :name="pokemon.name" :number="pokemon.number"
-                :imageUrl="pokemon.imageUrl" :type1="pokemon.type1" />
+            <MainCard v-for="pokemon in pokemons" :name="pokemon.name" :number="pokemon.number" :imageUrl="pokemon.imageUrl"
+                :type1="pokemon.type1" />
             <img src="https://icon2.cleanpng.com/20180614/wbe/kisspng-super-smash-bros-melee-computer-icons-pok-ball-5b22fe0bc03821.3365128115290199157873.jpg"
                 alt="" class="pokeball">
 
