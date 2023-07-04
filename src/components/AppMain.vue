@@ -1,25 +1,21 @@
 <script>
 import { store } from '../data/data';
 import MainCard from './MainCard.vue';
-import mainType from './MainSelect.vue';
 export default {
     data() {
         return store
-
     },
-    components: { MainCard, mainType },
+
+    components: { MainCard, },
 
 }
 </script>
 
 <template>
     <div class="container">
-        <mainType />
         <div class="container-card">
             <MainCard v-for="pokemon in pokemons" :name="pokemon.name" :number="pokemon.number" :imageUrl="pokemon.imageUrl"
                 :type1="pokemon.type1" />
-
-
         </div>
     </div>
 </template>
