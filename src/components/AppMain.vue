@@ -26,7 +26,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: rgb(129, 8, 8);
 
 
@@ -40,7 +39,7 @@ export default {
         border-radius: 30px;
 
         .card {
-            flex-basis: calc(100% / 4 - 20px);
+            flex-basis: calc(100% / 3 - 20px);
         }
     }
 }
