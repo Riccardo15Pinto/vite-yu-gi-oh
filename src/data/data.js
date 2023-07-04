@@ -7,6 +7,4 @@ export const store = reactive({
   totalDocs : '',
   hasPrevPage: '',
   hasNextPage: '',
-  prevPage: '',
-  nextPage: ','
 })
