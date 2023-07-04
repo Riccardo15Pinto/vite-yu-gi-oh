@@ -23,8 +23,6 @@ export default {
         this.store.pokemons = res.data.docs;
         this.store.page = res.data.page;
         this.store.totalDocs = res.data.totalDocs;
-        this.store.hasPrevPage = res.data.hasPrevPage;
-        this.store.hasNextPage = res.data.hasNextPage;
       })
     },
 
@@ -51,6 +49,15 @@ export default {
         this.store.pokemons = res.data.docs;
       })
 
+    },
+
+    gotoPrevPage() {
+      const endpointPage = `${endpoint}?page=${this.currentcontatore}`;
+      this.contatore--;
+      axios.get(endpointPage).then(res => {
+        this.store.pokemons = res.data.docs;
+      })
+
     }
 
   },
@@ -70,8 +77,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader @select-Option="getfilterPokemons" :isPrevDisabled="store.hasPrevPage" :isNextDisabled="store.hasNextPage"
-    @next-click="gotoNextPage" />
+  <AppHeader @select-Option="getfilterPokemons" @next-click="gotoNextPage" @prev-click="gotoPrevPage" />
   <Appmain />
 </template>
 
