@@ -7,12 +7,16 @@ import Appmain from './components/AppMain.vue'
 import AppHeader from './components/AppHeader.vue';
 
 export default {
+
   components: { Appmain, AppHeader },
+
   data() {
     return {
       store,
+      contatore: 1,
     }
   },
+
   methods: {
     getItemsList(target) {
       axios.get(target).then(res => {
@@ -21,11 +25,14 @@ export default {
         this.store.totalDocs = res.data.totalDocs;
         this.store.hasPrevPage = res.data.hasPrevPage;
         this.store.hasNextPage = res.data.hasNextPage;
-        this.store.prevPage = res.data.prevPage;
-        this.store.nextPage = res.data.nextPage;
       })
     },
 
+    getItemsTypeList(target) {
+      axios.get(target).then(res => {
+        this.store.mainType = res.data;
+      })
+    },
 
     getfilterPokemons(userchoice) {
 
@@ -37,15 +44,23 @@ export default {
       }
     },
 
-
-    getItemsTypeList(target) {
-      axios.get(target).then(res => {
-        this.store.mainType = res.data;
+    gotoNextPage() {
+      const endpointPage = `${endpoint}?page=${this.currentcontatore}`;
+      this.contatore++;
+      axios.get(endpointPage).then(res => {
+        this.store.pokemons = res.data.docs;
       })
-    },
 
+    }
 
   },
+
+  computed: {
+    currentcontatore() {
+      return this.contatore
+    }
+  },
+
   created() {
     this.getItemsList(endpoint)
 
@@ -55,7 +70,8 @@ export default {
 </script>
 
 <template>
-  <AppHeader @select-Option="getfilterPokemons" />
+  <AppHeader @select-Option="getfilterPokemons" :isPrevDisabled="store.hasPrevPage" :isNextDisabled="store.hasNextPage"
+    @next-click="gotoNextPage" />
   <Appmain />
 </template>
 
