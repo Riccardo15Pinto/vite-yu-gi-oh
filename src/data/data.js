@@ -2,5 +2,11 @@ import { reactive } from 'vue'
 
 export const store = reactive({
   pokemons : [],
-  mainType : []
+  mainType : [],
+  page:'' ,
+  totalDocs : '',
+  hasPrevPage: '',
+  hasNextPage: '',
+  prevPage: '',
+  nextPage: ','
 })
